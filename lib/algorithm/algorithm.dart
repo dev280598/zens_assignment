@@ -1,12 +1,18 @@
 void miniMaxSum(List<int> arr) {
-  arr.sort();
-  int minSum = arr.take(4).reduce((a, b) => a + b);
-  int maxSum = arr.skip(1).reduce((a, b) => a + b);
-  print('$minSum $maxSum');
+  int sum = arr.reduce((a, b) => a + b);
+  int max = sum - arr.first;
+  int min = sum - arr.first;
+
+  for( var i = 0; i < arr.length; i ++) {
+    final sub = sum - arr[i];
+    max = max > sub ? max : sub;
+    min = min < sub ? min : sub;
+  }
+  print('$min $max');
 }
 
-//
-// void main() {
-//   List<int> arr = [1, 2, 3, 4, 6];
-//   miniMaxSum(arr);
-// }
+
+void main() {
+  List<int> arr = [5, 3, 2, 1, 4];
+  miniMaxSum(arr);
+}
