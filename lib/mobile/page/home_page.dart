@@ -106,7 +106,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               Widget children = const SizedBox.shrink();
               if (snapshot.hasData) {
                 final jokes = snapshot.data ?? [];
-                debugPrint(']]]]]${jokes.length}');
                 if (jokes.isNotEmpty) {
                   children = PageView(
                     controller: _pageViewController,
@@ -152,9 +151,10 @@ class _HeaderSliver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const height = 130.0;
     return SliverAppBar(
-      backgroundColor: Colors.green,
-      expandedHeight: 130.0,
+      backgroundColor: context.colorS.primary,
+      expandedHeight: height,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
           padding: const EdgeInsets.symmetric(horizontal: Spacing.m),
@@ -164,13 +164,13 @@ class _HeaderSliver extends StatelessWidget {
               Text(
                 Strings.title,
                 style: context.textT.titleMedium
-                    ?.setColor(context.colorS.surface),
+                    ?.setColor(context.colorS.onPrimary),
               ),
               Spacing.m.toSpaceY(),
               Text(
                 Strings.subTitle,
                 style: context.textT.labelMedium
-                    ?.setColor(context.colorS.surface),
+                    ?.setColor(context.colorS.onPrimary),
               ),
             ],
           ),

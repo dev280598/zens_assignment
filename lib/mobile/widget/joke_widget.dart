@@ -26,29 +26,32 @@ class JokeWidget extends StatelessWidget {
               style: context.textT.bodyMedium,
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: FilledButton(
-                  onPressed: () {
-                    onVoted.call(joke.id);
-                  },
-                  style: FilledButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: FilledButton(
+                    onPressed: () {
+                      onVoted.call(joke.id);
+                    },
+                    style: FilledButton.styleFrom(
+                      backgroundColor: context.colorS.secondary,
+                    ),
+                    child: const Text(Strings.funnyBtn),
                   ),
-                  child: const Text(Strings.funnyBtn),
                 ),
-              ),
-              Spacing.l.toSpaceX(),
-              Expanded(
-                child: FilledButton(
-                  child: const Text(Strings.notFunnyBtn),
-                  onPressed: () {
-                    onVoted.call(joke.id);
-                  },
+                Spacing.l.toSpaceX(),
+                Expanded(
+                  child: FilledButton(
+                    child: const Text(Strings.notFunnyBtn),
+                    onPressed: () {
+                      onVoted.call(joke.id);
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
